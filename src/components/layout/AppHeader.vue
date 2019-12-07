@@ -16,6 +16,7 @@
             <a>Stock</a>
           </router-link>
         </ul>
+        <strong class="navbar-text navbar-right">funds:{{ funds }}</strong>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">end day</a></li>
           <li class="dropdown">
@@ -38,3 +39,13 @@
     </div>
   </nav>
 </template>
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
+  computed: {
+    funds() {
+      return this.$store.getters["profile/getFunds"];
+    }
+  }
+});
+</script>

@@ -12,6 +12,7 @@
             <app-input
               v-model="quantity"
               @warning-class="warningClass = $event"
+              :mode="{ mode: 'buy', stockPrice: stock.price }"
             ></app-input>
           </div>
         </div>
@@ -19,7 +20,7 @@
           <button
             class="btn btn-success btn-lg"
             @click="orderStock"
-            :disabled="warningClass['has-error']"
+            :disabled="warningClass['has-error'] || quantity === 0"
           >
             Buy
           </button>
@@ -35,7 +36,7 @@ import { Action, Getter } from "vuex-class";
 import { IStocks, ITypeWarning, IOrder } from "@/types";
 import AppInput from "@/components/layout/AppInput.vue";
 
-const namespace = "profile";
+const namespace = "stocks";
 
 @Component({
   components: {
@@ -57,6 +58,8 @@ export default class Stocks extends Vue {
       stockPrice: this.stock.price
     };
     this.buyStocks(order);
+    this.quantity = 0;
+    this.warningClass = { "has-error": false, "has-success": false };
   }
 }
 </script>

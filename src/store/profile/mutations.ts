@@ -26,8 +26,12 @@ const mutations: MutationTree<IProfileState> = {
       } else {
         state.orders.splice(state.orders.indexOf(selectedStock), 1);
       }
-      state.funds += selectedStock.quantity * (order.stockPrice as number);
+      state.funds += order.quantity * (order.stockPrice as number);
     }
+  },
+  savePortfolio(state, data: IProfileState) {
+    state.funds = data.funds;
+    state.orders = data.orders;
   }
 };
 

@@ -6,6 +6,7 @@ const getters: GetterTree<IProfileState, IRootState> = {
     return state.funds;
   },
   getOrders: (state, getters, rootState, rootGetters) => {
+    console.log(state.orders);
     return state.orders.map(
       (order): IBayedStocks => {
         const selectedOrder = rootGetters["stocks/getFullStocks"].find(
@@ -14,7 +15,7 @@ const getters: GetterTree<IProfileState, IRootState> = {
           }
         );
         return {
-          id: selectedOrder.id,
+          stockId: selectedOrder.id,
           name: selectedOrder.name,
           price: selectedOrder.price,
           quantity: order.quantity

@@ -9,6 +9,13 @@ const mutations: MutationTree<IStocksState> = {
   stocksFailed: state => {
     state.stocks = undefined;
     state.error = true;
+  },
+  randomizeStocks: state => {
+    if (state.stocks) {
+      state.stocks.forEach(stock => {
+        stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
+      });
+    }
   }
 };
 

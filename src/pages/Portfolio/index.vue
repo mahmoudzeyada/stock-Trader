@@ -3,7 +3,7 @@
     <div class="row">
       <stocks
         v-for="bayedStock in getOrders"
-        :key="bayedStock.id"
+        :key="bayedStock.stockId"
         :bayedStock="bayedStock"
       ></stocks>
     </div>
@@ -24,6 +24,9 @@ const namespace: string = "profile";
 })
 export default class Stock extends Vue {
   @Getter("getOrders", { namespace }) getOrders: any;
+  created() {
+    this.$store.dispatch("stocks/fetchStocks");
+  }
 }
 </script>
 <style scoped></style>

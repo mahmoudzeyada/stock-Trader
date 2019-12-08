@@ -89,7 +89,6 @@ export default class AppInput extends Vue {
   }
 
   checkSellingStocks(oldQuantity: number, newQuantity: number): boolean {
-    console.log(newQuantity, oldQuantity);
     if (newQuantity > oldQuantity) {
       return false;
     }

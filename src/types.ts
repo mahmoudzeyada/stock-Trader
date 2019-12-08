@@ -25,8 +25,16 @@ export interface IProfileState {
   orders: IOrder[];
 }
 export interface IBayedStocks {
-  id: number;
+  stockId: number;
   name: string;
   price: number;
   quantity: number;
+}
+
+type Tmode = "buy" | "sell";
+
+export interface IModePayload {
+  mode: Tmode;
+  oldQuantity?: number;
+  stockPrice?: number;
 }
